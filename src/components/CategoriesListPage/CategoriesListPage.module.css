@@ -1,0 +1,44 @@
+.buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.button {
+    transition: 0.3s ease;
+    font-size: 1.125rem;
+    font-weight: 600;
+    border: none;
+}
+
+.button:not(:last-child) {
+    margin-bottom: 20px;
+}
+
+.addButton {
+    border-radius: 10px;
+    background: var(--fill-light-grey, #F0EFEF);
+    padding: 19px 26px;
+    box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.25);
+}
+
+.addButton:hover {
+    background: var(--grey-text-fields, rgba(175, 172, 172, 0.40));
+}
+
+.addButton:active {
+    background: var(--fill-grey, #BBB5B5);
+}
+
+.removeButton {
+    color: #E51428;
+    background: transparent;
+}
+
+.removeButton:hover {
+    color: rgba(229, 20, 40, 0.50);
+}
+
+.removeButton:active {
+    color: var(--red, #D40209);
+}

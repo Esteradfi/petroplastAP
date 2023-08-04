@@ -1,0 +1,42 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 50px;
+}
+
+.headerItem {
+    font-size: 24px;
+    font-weight: 600;
+    margin: 0;
+}
+
+.headerTitle {
+    color: #DF0006;
+}
+
+.exit {
+    transition: 0.3s ease;
+    cursor: pointer;
+    padding: 0;
+    background: transparent;
+    border: none;
+    outline: none;
+}
+
+.exit:hover {
+    opacity: 0.5;
+}
+
+.exit:active {
+    opacity: 1;
+}
+
+.exit a {
+    text-decoration: none;
+    color: #000000;
+}
+
+.exit:hover {
+    opacity: 0.5;
+    color: #000000;
+}
