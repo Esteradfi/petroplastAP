@@ -3,9 +3,7 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 254px;
-    min-height: 309px;
-    padding: 21px 77px 70px 69px;
+    width: 386px;
     display: flex;
     flex-direction: column;
 }
@@ -16,6 +14,7 @@
 
 .logo {
     margin-bottom: 15px;
+    max-width: 100%;
 }
 
 .title {
@@ -23,20 +22,17 @@
     margin-block-end: 0;
     margin-bottom: 30px;
     font-weight: 600;
-    font-size: 0.875rem;
+    font-size: 1.5rem;
     margin-bottom: 30px;
-}
-
-.inputsBlock {
-    margin-bottom: 20px;
+    text-align: center;
 }
 
 .inputWrapper {
     position: relative;
 }
 
-.inputWrapper:not(:last-child) {
-    margin-bottom: 25px;
+.inputWrapper{
+    margin-bottom: 40px;
 }
 
 .input {
@@ -46,7 +42,7 @@
     box-sizing: border-box;
     font-family: "Montserrat";
     padding: 12px 10px;
-    font-size: 0.75rem;
+    font-size: 1.125rem;
     transition: 0.3s ease;
     outline: none;
     color: #000000;
@@ -80,13 +76,14 @@
     font-family: "Montserrat";
     transition: 0.3s ease;
     border-radius: 5px;
-    font-size: 0.75rem;
+    font-size: 1.25rem;
     font-weight: 600;
     cursor: pointer;
 }
 
 .shortButton {
-    padding: 6.5px 20px;
+    padding: 14px 35px;
+    width: 100%;
 }
 
 .longButton {

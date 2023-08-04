@@ -1,9 +1,8 @@
-import { NavLink } from "react-router-dom";
-import styles from "./../AuthPage.module.css";
-import { useDispatch } from "react-redux";
+import styles from "./AuthPage.module.css";
 import { useForm, SubmitHandler } from "react-hook-form";
-import { postLoginThunk, AuthValues } from "../../../redux/auth-reducer";
-import { useAppDispatch } from "../../../redux/hooks";
+import { postLoginThunk, AuthValues } from "../../redux/auth-reducer";
+import { useAppDispatch } from "../../redux/hooks";
+import logotype from "./../../assets/images/logo.png";
 
 const Login = () => {
     const dispatch = useAppDispatch();
@@ -24,7 +23,10 @@ const Login = () => {
     }
 
     return (
-        <article>
+        <section className={styles.AuthPage}>
+            <article className={styles.logoBlock}>
+                <img className={styles.logo} src={logotype} alt="Логотип" />
+            </article>
             <h3 className={styles.title}>
                 Войдите в личный кабинет    
             </h3>
@@ -42,19 +44,10 @@ const Login = () => {
                     </div>
                 </div>
                 <div className={styles.formRow}>
-                    <label htmlFor="remember" className={"custom-checkboxes " + styles.customCheckbox}>
-                        <input type="checkbox" id="remember"/>
-                        <span className="custom-checkboxes-span"></span>
-                        <span className={styles.customCheckboxText}>Запомнить пароль</span>
-                    </label>
-                    <NavLink to="./forgot" className={styles.formLink}>Забыли пароль?</NavLink>
-                </div>
-                <div className={styles.formRow}>
-                    <NavLink to="./registration" className={styles.formLink}>Зарегистрироваться</NavLink>
                     <input type="submit" className={styles.shortButton + " " + styles.grayButton + " " + styles.submitButton} value="Войти" />
                 </div>    
             </form>   
-        </article>
+        </section>
     )
 };
 

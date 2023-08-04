@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import './App.css';
 import ScrollToTop from './components/common/ScrollToTop/ScrollToTop';
 import { Route, Routes } from 'react-router-dom';
-import AuthPage from './components/AuthPage/AuthPage';
 import Header from './components/common/Header/Header';
 import CategoriesListPage from './components/CategoriesListPage/CategoriesListPage';
 import AddCategoryPage from './components/AddCategoryPage/AddCategoryPage';
@@ -11,6 +10,7 @@ import { useAppDispatch, useAppSelector } from './redux/hooks';
 import { changeIsOpen, clearModals } from './redux/modals-window-reducer';
 import Modal from './components/common/Modal/Modal';
 import { checkToken } from './redux/auth-reducer';
+import Login from './components/AuthPage/Login';
 
 function App() {
   let isAuth = useAppSelector(state => state.auth.isAuth);
@@ -31,7 +31,7 @@ function App() {
   if(!isAuth) {
     return (
       <Routes>
-        <Route path='/*' element={<AuthPage />} />
+        <Route path='/' element={<Login />} />
       </Routes>
     )
   }
