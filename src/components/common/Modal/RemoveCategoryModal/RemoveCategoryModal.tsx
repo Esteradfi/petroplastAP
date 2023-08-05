@@ -1,5 +1,6 @@
 import { useAppDispatch } from "../../../../redux/hooks";
 import { changeIsOpen, clearModals } from "../../../../redux/modals-window-reducer";
+import styles from "./../Modal.module.css";
 
 const RemoveCategoryModal = () => {
 
@@ -12,17 +13,17 @@ const RemoveCategoryModal = () => {
 
     return (
         <div>
-            <h3>
+            <h3 className={styles.title}>
                 Удалить категорию?
             </h3>
-            <p>
+            <p className={styles.paragraph}>
                 При удалении категории удаляются <strong>все товары</strong> в этой категории
             </p>
-            <div>
-                <button onClick={closeModal}>
+            <div className={styles.buttons}>
+                <button onClick={closeModal} className={styles.button + " " + styles.cancel}>
                     Отмена
                 </button>
-                <button>
+                <button className={styles.button + " " + styles.done}>
                     Удалить
                 </button>
             </div>

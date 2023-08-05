@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = 'http://185.200.241.117:3000';
+const API_URL = 'https://1820417-ln81015.twc1.net/api';
 
 const $api = axios.create({
     baseURL: API_URL

@@ -1,0 +1,106 @@
+.item {
+    width: 22.5%;
+    margin-bottom: 60px;
+    background: #ffffff;
+}
+
+.image {
+    border-radius: 10px 10px 0px 0px;
+    width: 100%;
+    max-height: 158px;
+    object-fit: cover;
+    background: #ffffff;
+}
+
+.title {
+    text-align: center;
+    padding: 6px 2px;
+    border-radius: 0px 0px 10px 10px;
+    background: var(--fill-light-grey, #F0EFEF);
+    width: 100%;
+    margin: 0 0 20px 0;
+    box-sizing: border-box;
+    font-weight: 600;
+    font-size: 1.125rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -moz-box;
+    display: -webkit-box;
+    line-clamp: 1;
+    line-height: 1.5;
+    box-orient: vertical;
+    -moz-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-between;
+}
+
+.button {
+    border-radius: 5px;
+    padding: 10px 5px;
+    color: #ffffff;
+    border: none;
+    font-size: 0.75rem;
+    font-weight: 700;
+    transition: 0.3s ease;
+}
+
+.edit {
+    background: var(--orange-buttons-and-text, #F60);
+    width: 44.44%;
+}
+
+.edit:hover {
+    background: var(--orange-hover, #FF822F);
+}
+
+.edit:active {
+    background: var(--orange-active, #F96E42);
+}
+
+.remove {
+    background: var(--red-buttons-and-text, #E51428);
+    width: 39.26%;
+}
+
+.remove:hover {
+    background: var(--red-hover-2, #C5081A);
+}
+
+.remove:active {
+    background: var(--red, #D40209);
+}
+
+@media screen and (max-width: 1064px) {
+    .item {
+        width: 31%;
+    }
+}
+
+@media screen and (max-width: 790px) {
+    .item {
+        width: 48%;
+    }
+}
+
+@media screen and (max-width: 530px) {
+    .item {
+        width: 60%;
+    }
+}
+
+@media screen and (max-width: 430px) {
+    .item {
+        width: 80%;
+    }
+}
+
+@media screen and (max-width: 310px) {
+    .item {
+        width: 100%;
+    }
+}

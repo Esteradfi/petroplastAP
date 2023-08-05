@@ -1,9 +1,8 @@
-import { NavLink } from "react-router-dom";
 import { useAppDispatch } from "../../../../redux/hooks";
 import { changeIsOpen, clearModals } from "../../../../redux/modals-window-reducer";
 import styles from "./../Modal.module.css";
 
-const AddCategoryModal = () => {
+const DoneAddProductModal = () => {
 
     const dispatch = useAppDispatch();
 
@@ -15,21 +14,21 @@ const AddCategoryModal = () => {
     return (
         <div>
             <h3 className={styles.title}>
-                Добавить категорию?
+                Товар добавлен!
             </h3>
             <p className={styles.paragraph}>
-                При добавлении категории нужно будет ввести ее данные.
+                Товар добавлен в категорию и отобразится на сайте.
             </p>
             <div className={styles.buttons}>
                 <button onClick={closeModal} className={styles.button + " " + styles.cancel}>
                     Отмена
                 </button>
-                <button onClick={closeModal} className={styles.button + " " + styles.done}>
-                    <NavLink to="/newcategory">Перейти</NavLink>
+                <button className={styles.button + " " + styles.done}>
+                    Продолжить
                 </button>
             </div>
         </div>
     )
 }
 
-export default AddCategoryModal;
+export default DoneAddProductModal;

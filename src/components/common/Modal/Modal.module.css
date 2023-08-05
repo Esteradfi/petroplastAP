@@ -13,3 +13,69 @@
     box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.25);
     padding: 30px 29px 63px 60px;
 }
+
+.title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin: 0 0 14px 0;
+}
+
+.paragraph {
+    font-weight: 400;
+    font-size: 1rem;
+    line-height: 130%;
+    margin: 0 0 32px 0;
+}
+
+.buttons {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.button {
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 1.125rem;
+    transition: 0.3s ease;
+    padding: 9px 15px;
+}
+
+.cancel {
+    border: 1px solid rgba(173, 166, 166, 0.6);
+    background: transparent;
+    color: var(--text-grey, #BBB5B5);
+}
+
+.cancel:hover {
+    background: var(--stroke-light-grey-2, #DAD3D3);
+}
+
+.cancel:active {
+    background: var(--stroke-light-grey, #ADA6A6);
+    color: var(--grey-active, #525252);
+}
+
+.done {
+    background: var(--red-buttons-and-text, #E51428);
+    border: 1px solid var(--red-buttons-and-text, #E51428);
+    color: #ffffff;
+    margin-left: 20px;
+}
+
+.done:hover {
+    background: var(--bright-red, #FF0018);
+    border: 1px solid var(--bright-red, #FF0018);
+}
+
+.done:active {
+    background: var(--dark-red, #CA1527);
+    border: 1px solid var(--dark-red, #CA1527);
+}
+
+@media screen and (max-width: 510px) {
+    .modalWindow {
+        width: 90%;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+}

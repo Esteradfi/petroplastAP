@@ -6,10 +6,16 @@ body {
 button {
   font-family: "Montserrat";
   cursor: pointer;
+  outline: none;
 }
 
 a {
   text-decoration: none;
+  color: inherit;
+}
+
+a:active {
+  color: inherit;
 }
 
 img {
@@ -62,7 +68,7 @@ img {
   font-size: 12px;
   font-weight: 400;
   position: absolute;
-  bottom: -30px;
+  bottom: -25px;
 }
 
 .container {
@@ -80,4 +86,10 @@ img {
   top: 0;
   left: 0;
   cursor: pointer;
+}
+
+@media screen and (max-width: 1220px) {
+  .container {
+    padding: 0 10px;
+  }
 }
