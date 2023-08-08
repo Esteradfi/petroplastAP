@@ -1,8 +1,9 @@
 {
   "files": {
-    "main.css": "/petroplastAP/static/css/main.dcf5b5bf.css",
-    "main.js": "/petroplastAP/static/js/main.dfae3cc5.js",
+    "main.css": "/petroplastAP/static/css/main.8846aa76.css",
+    "main.js": "/petroplastAP/static/js/main.517d2c6f.js",
     "static/media/logo.png": "/petroplastAP/static/media/logo.c0b442d3cc08e42d5ef6.png",
+    "static/media/emptyImage.jpg": "/petroplastAP/static/media/emptyImage.4333a755fab557462c56.jpg",
     "static/media/montserrat-latin-400-normal.woff": "/petroplastAP/static/media/montserrat-latin-400-normal.0f1794a79a689a577c2a.woff",
     "static/media/montserrat-latin-ext-400-normal.woff": "/petroplastAP/static/media/montserrat-latin-ext-400-normal.688aee1c9dd2450dd804.woff",
     "static/media/montserrat-latin-400-normal.woff2": "/petroplastAP/static/media/montserrat-latin-400-normal.acb6629fe45c43ad5d8b.woff2",
@@ -14,11 +15,11 @@
     "static/media/montserrat-vietnamese-400-normal.woff": "/petroplastAP/static/media/montserrat-vietnamese-400-normal.f36d8e9e08c584303451.woff",
     "static/media/montserrat-vietnamese-400-normal.woff2": "/petroplastAP/static/media/montserrat-vietnamese-400-normal.8f3f4c99eb0eeb5990f1.woff2",
     "index.html": "/petroplastAP/index.html",
-    "main.dcf5b5bf.css.map": "/petroplastAP/static/css/main.dcf5b5bf.css.map",
-    "main.dfae3cc5.js.map": "/petroplastAP/static/js/main.dfae3cc5.js.map"
+    "main.8846aa76.css.map": "/petroplastAP/static/css/main.8846aa76.css.map",
+    "main.517d2c6f.js.map": "/petroplastAP/static/js/main.517d2c6f.js.map"
   },
   "entrypoints": [
-    "static/css/main.dcf5b5bf.css",
-    "static/js/main.dfae3cc5.js"
+    "static/css/main.8846aa76.css",
+    "static/js/main.517d2c6f.js"
   ]
 }
