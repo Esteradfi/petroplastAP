@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = 'https://1820417-ln81015.twc1.net/api';
+export const API_URL = 'https://петропласт.рф/api';
 
 const $api = axios.create({
     baseURL: API_URL

@@ -1,19 +1,19 @@
-import styles from "./CategoriesListPage.module.css"
 import { useEffect } from "react";
-import { useAppDispatch, useAppSelector } from "../../redux/hooks";
+import { CategoriesItem, getCategoriesThunk } from "../../redux/categories-reducer";
 import { changeTitle } from "../../redux/header-reducer";
+import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import { changeIsAddCategory, changeIsOpen } from "../../redux/modals-window-reducer";
 import CategoriesListItem from "./CategoriesListItem/CategoriesListItem";
-import { CategoriesItem, getCategoriesThunk } from "../../redux/categories-reducer";
+import styles from "./CategoriesListPage.module.css";
 
 const CategoriesListPage = () => {
     const dispatch = useAppDispatch();
+    let categories = useAppSelector(state => state.categories.categoriesList);
 
     const openAddCategoryModal = () => {
         dispatch(changeIsOpen(true));
         dispatch(changeIsAddCategory(true));
     }
-
 
     useEffect(() => {
         dispatch(changeTitle('Категории товаров'));
@@ -23,7 +23,7 @@ const CategoriesListPage = () => {
         dispatch(getCategoriesThunk());
     }, []);
 
-    let categories = useAppSelector(state => state.categories.categoriesList);
+
 
     let categoriesItems = categories.map((el: CategoriesItem) => <CategoriesListItem key={el._id} {...el} />)
 
@@ -34,9 +34,6 @@ const CategoriesListPage = () => {
             <div className={styles.buttons}>
                 <button className={styles.button + " " + styles.addButton} onClick={openAddCategoryModal}>
                     + Добавить категорию
-                </button>
-                <button className={styles.button + " " + styles.removeButton}>
-                    Удалить все категории
                 </button>
             </div>
         </article>

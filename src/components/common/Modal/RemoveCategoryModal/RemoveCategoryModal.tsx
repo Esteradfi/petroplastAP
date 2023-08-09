@@ -1,14 +1,23 @@
-import { useAppDispatch } from "../../../../redux/hooks";
+import { NavLink } from "react-router-dom";
+import { clearSelectedImage, deleteCategoryThunk } from "../../../../redux/categories-reducer";
+import { useAppDispatch, useAppSelector } from "../../../../redux/hooks";
 import { changeIsOpen, clearModals } from "../../../../redux/modals-window-reducer";
 import styles from "./../Modal.module.css";
 
 const RemoveCategoryModal = () => {
 
     const dispatch = useAppDispatch();
+    let id = useAppSelector(state => state.modals.modalData.id);
 
     const closeModal = () => {
         dispatch(changeIsOpen(false));
         dispatch(clearModals());
+    }
+
+    const onRemoveCategory = () => {
+        dispatch(deleteCategoryThunk(id));
+        dispatch(clearSelectedImage());
+        closeModal();
     }
 
     return (
@@ -23,9 +32,9 @@ const RemoveCategoryModal = () => {
                 <button onClick={closeModal} className={styles.button + " " + styles.cancel}>
                     Отмена
                 </button>
-                <button className={styles.button + " " + styles.done}>
+                <NavLink to="/" onClick={onRemoveCategory} className={styles.button + " " + styles.done}>
                     Удалить
-                </button>
+                </NavLink>
             </div>
         </div>
     )

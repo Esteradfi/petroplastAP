@@ -70,6 +70,7 @@
 .done:active {
     background: var(--dark-red, #CA1527);
     border: 1px solid var(--dark-red, #CA1527);
+    color: #ffffff;
 }
 
 @media screen and (max-width: 510px) {
@@ -77,5 +78,17 @@
         width: 90%;
         padding-left: 10px;
         padding-right: 10px;
+    }
+    .buttons {
+        flex-direction: column-reverse;
+    }
+    .button {
+        width: 100%;
+        box-sizing: border-box;
+        margin-left: 0;
+        text-align: center;
+    }
+    .button:last-child {
+        margin-bottom: 20px;
     }
 }

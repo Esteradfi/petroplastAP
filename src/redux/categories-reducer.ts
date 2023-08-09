@@ -1,20 +1,43 @@
-import {createAsyncThunk, createSlice} from '@reduxjs/toolkit';
-import type {PayloadAction} from '@reduxjs/toolkit'
+import type { PayloadAction } from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import $api from '../http';
 
 export interface CategoriesState {
     categoriesList: Array<CategoriesItem> | [],
+    selectedImage: string,
+    selectedImageName: string,
+    selectedCategory: CategoriesItem,
+    addCategoryDone: boolean,
+    editCategoryDone: boolean,
 };
 
 export type CategoriesItem = {
+    checkbox: boolean,
     name: string,
     image: string,
     _id: string,
     __v: string,
 }
 
+export type NewCategory = {
+    name: string,
+    image: string,
+    checkbox: boolean
+}
+
 const initialState: CategoriesState = {
-    categoriesList: []
+    categoriesList: [],
+    selectedImage: '',
+    selectedImageName: '',
+    addCategoryDone: false,
+    editCategoryDone: false,
+    selectedCategory: {
+        checkbox: false,
+        name: '',
+        image: '',
+        _id: '',
+        __v: '',
+    }
 };
 
 export const getCategoriesThunk = createAsyncThunk(
@@ -22,11 +45,62 @@ export const getCategoriesThunk = createAsyncThunk(
     async () => {
         try {
             const response = await $api.get(`/category`);
-            console.log(response.data);
             return response.data;
         } catch (err: any) {
-            console.error('Ошибка отправки данных:', err);
-            alert(err.message);
+            alert(err.response.data.message);
+        }
+    }
+)
+
+export const postNewImageThunk = createAsyncThunk(
+    'Post image',
+    async (data: FormData) => {
+        try {
+            const response = await $api.post('/s3/upload', data);
+            return response.data.uri;
+        }
+        catch (err: any) {
+            alert(err.response.data.message);
+        }
+    }
+)
+
+export const postNewCategoryThunk = createAsyncThunk(
+    'Post category',
+    async (data: NewCategory) => {
+        try {
+            const response = await $api.post('/category', data);
+            return response.data;
+        }
+        catch (err: any) {
+            alert(err.response.data.message);
+            console.log(err)
+        }
+    }
+)
+
+export const updateCategoryThunk = createAsyncThunk(
+    'Update category',
+    async (data: CategoriesItem) => {
+        try {
+            const response = await $api.patch(`/category/${data._id}`, data);
+            return response.data;
+        }
+        catch (err: any) {
+            alert(err.response.data.message);
+            console.log(err)
+        }
+    }
+)
+
+export const deleteCategoryThunk = createAsyncThunk(
+    'Delete category',
+    async (id: string) => {
+        try {
+            const response = await $api.delete(`/category/${id}`);
+            return id;
+        } catch (err: any) {
+            alert(err.response.data.message);
         }
     }
 )
@@ -35,12 +109,58 @@ export const CategoriesSlice = createSlice({
     name: "Categories",
     initialState,
     reducers: {
-        changeTitle: (state, action: PayloadAction<string>) => {
-
+        clearSelectedImage: (state) => {
+            state.selectedImage = '';
+            state.selectedImageName = '';
+        },
+        setSelectedCategory: (state, action: PayloadAction<CategoriesItem>) => {
+            state.selectedCategory = action.payload;
+        },
+        clearSelectedCategory: (state) => {
+            state.selectedCategory = {
+                checkbox: false,
+                name: '',
+                image: '',
+                _id: '',
+                __v: '',
+            };
+        },
+        clearAddCategoryDone: (state) => {
+            state.addCategoryDone = false;
+        },
+        clearEditCategoryDone: (state) => {
+            state.editCategoryDone = false;
         }
-    }
+    },
+    extraReducers: (builder) => {
+        builder
+        .addCase(getCategoriesThunk.fulfilled, (state, action) => {
+            state.categoriesList = action.payload.reverse();
+        })
+        .addCase(postNewImageThunk.fulfilled, (state, action) => {
+            state.selectedImage = action.payload;
+            let imageNameArr = action.payload.split('/');
+            state.selectedImageName = imageNameArr[imageNameArr.length - 1];
+        })
+        .addCase(postNewCategoryThunk.fulfilled, (state, action) => {
+            if(action.payload !== undefined) {
+                state.addCategoryDone = true;
+            }
+            console.log()
+        })
+        .addCase(updateCategoryThunk.fulfilled, (state, action) => {
+            if(action.payload !== undefined) {
+                state.editCategoryDone = true;
+            }
+            console.log()
+        })
+        .addCase(deleteCategoryThunk.fulfilled, (state, action) => {
+            let index = state.categoriesList.findIndex(el => el._id === action.payload);
+            state.categoriesList.splice(index, 1);
+        })
+    },
 });
 
 export default CategoriesSlice.reducer;
 
-export const {changeTitle} = CategoriesSlice.actions;
+export const {clearSelectedImage, setSelectedCategory, clearSelectedCategory, clearAddCategoryDone, clearEditCategoryDone} = CategoriesSlice.actions;

@@ -1,4 +1,4 @@
-import {createSlice, createAsyncThunk, PayloadAction} from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import $api from '../http';
 //import type {PayloadAction} from '@reduxjs/toolkit';
 
@@ -16,20 +16,20 @@ export const postLoginThunk = createAsyncThunk(
         try {
             const response = await $api.post(`/auth/login`, data);
             localStorage.setItem('token', response.data.access_token);
-            return true;
+            let blockTime = +new Date() + (3600 * 1000);
+            localStorage.setItem('blockTime', blockTime.toString());
         } catch (err: any) {
-            console.error('Ошибка отправки данных:', err);
-            alert(err.message);
+            alert(err.response.data.message)
         }
     }
 )
 
 export interface AuthState {
-    isAuth: boolean
+    isAuth: boolean,
 };
 
 const initialState: AuthState = {
-    isAuth: false
+    isAuth: false,
 };
 
 export const authSlice = createSlice({
@@ -41,12 +41,12 @@ export const authSlice = createSlice({
         },
         checkToken: (state) => {
             state.isAuth = true;
-        }
+        },
     },
     extraReducers: (builder) => {
         builder
         .addCase(postLoginThunk.fulfilled, (state, action) => {
-            state.isAuth = action.payload || false;
+            state.isAuth = true;
         })
     },
 });

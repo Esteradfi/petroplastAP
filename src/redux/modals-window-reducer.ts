@@ -1,5 +1,5 @@
-import {createSlice} from '@reduxjs/toolkit';
-import type {PayloadAction} from '@reduxjs/toolkit';
+import type { PayloadAction } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 
 export interface ModalsState {
     isRemoveCategory: boolean,
@@ -8,9 +8,13 @@ export interface ModalsState {
     isAddProduct: boolean,
     isDoneAddCategory: boolean,
     isDoneAddProduct: boolean,
+    isDoneEditCategory: boolean,
     isViewCategory: boolean,
     isNotViewCategory: boolean,
-    isOpen: boolean
+    isOpen: boolean,
+    modalData: {
+        id: string
+    }
 };
 
 const initialState: ModalsState = {
@@ -20,9 +24,13 @@ const initialState: ModalsState = {
     isAddProduct: false,
     isDoneAddCategory: false,
     isDoneAddProduct: false,
+    isDoneEditCategory: false,
     isViewCategory: false,
     isNotViewCategory: false,
-    isOpen: false
+    isOpen: false,
+    modalData: {
+        id: ''
+    }
 };
 
 export const ModalsSlice = createSlice({
@@ -47,6 +55,9 @@ export const ModalsSlice = createSlice({
         changeIsDoneAddProduct: (state, action: PayloadAction<boolean>) => {
             state.isDoneAddProduct = action.payload;
         },
+        changeIsDoneEditCategory: (state, action: PayloadAction<boolean>) => {
+            state.isDoneEditCategory = action.payload;
+        },
         changeIsViewCategory: (state, action: PayloadAction<boolean>) => {
             state.isViewCategory = action.payload;
         },
@@ -56,6 +67,9 @@ export const ModalsSlice = createSlice({
         changeIsOpen: (state, action: PayloadAction<boolean>) => {
             state.isOpen = action.payload;
         },
+        setModalData: (state, action: PayloadAction<string>) => {
+            state.modalData.id = action.payload;
+        },
         clearModals: (state) => {
             state.isRemoveCategory = false;
             state.isRemoveProduct = false;
@@ -63,9 +77,11 @@ export const ModalsSlice = createSlice({
             state.isAddProduct = false;
             state.isDoneAddCategory = false;
             state.isDoneAddProduct = false;
+            state.isDoneEditCategory = false;
             state.isViewCategory = false;
             state.isNotViewCategory = false;
-        }
+            state.modalData.id = ''
+        },
     }
 });
 
@@ -73,4 +89,4 @@ export default ModalsSlice.reducer;
 
 export const {changeIsRemoveCategory, changeIsRemoveProduct, changeIsAddCategory, changeIsAddProduct,
                 changeIsDoneAddCategory, changeIsDoneAddProduct, changeIsViewCategory, changeIsNotViewCategory,
-                changeIsOpen, clearModals} = ModalsSlice.actions;
+                changeIsOpen, clearModals, setModalData, changeIsDoneEditCategory} = ModalsSlice.actions;

@@ -1,0 +1,223 @@
+.article {
+    margin-top: 30px;
+}
+
+.wrapper {
+    display: flex;
+    justify-content: space-between;
+}
+
+.leftColumn {
+    width: 40%;
+}
+
+.rightColumn {
+    width: 50%;
+}
+
+.image {
+    border-radius: 10px;
+    width: 100%;
+    max-height: 400px;
+    max-width: 400px;
+    object-fit: cover;
+    aspect-ratio: 1;
+    margin-bottom: 30px;
+}
+
+.cancel {
+    color: var(--red-buttons-and-text, #E51428);
+    font-size: 24px;
+    font-weight: 600;
+    margin-top: 30px;
+    display: inline-block;
+    background: transparent;
+    outline: none;
+    border: none;
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.title {
+    color: var(--orange-buttons-and-text, #F60);
+    font-size: 22px;
+    font-weight: 500;
+    margin: 0;
+}
+
+.inputs {
+    margin: 30px 0;
+}
+
+.input {
+    border-radius: 5px;
+    border: 1px solid var(--text-grey, #BBB5B5);
+    box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.25);
+    font-size: 20px;
+    padding: 13px 15px;
+    min-width: 70%;
+    outline: none;
+    transition: 0.3s ease;
+    box-sizing: border-box;
+}
+
+.input:hover, .input:active, .input:focus {
+    border: 1px solid var(--stroke-light-grey, #ADA6A6);
+    box-shadow: 0px 2px 2px 2px rgba(169, 163, 163, 0.25);
+}
+
+.input::placeholder {
+    font-weight: 600;
+    color: var(--text-grey, #BBB5B5);
+}
+
+@media screen and (max-width: 835px) {
+    .input {
+        width: 100%;
+    }
+}
+
+.checkboxText {
+    color: var(--stroke-light-grey, #ADA6A6);
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.formElement:not(:last-child) {
+    margin-bottom: 30px;
+    display: block;
+    position: relative;
+}
+
+.addButton {
+    border-radius: 10px;
+    background: var(--orange-buttons-and-text, #F60);
+    color: #FFF;
+    font-size: 20px;
+    font-weight: 600;
+    border: none;
+    padding: 17px 14px;
+    cursor: pointer;
+    transition: 0.3s ease;
+    min-width: 250px;
+}
+
+.addButton:hover {
+    background: var(--orange-hover, #FF822F);
+}
+
+.addButton:active {
+    background: var(--orange-active, #F96E42);
+}
+
+.inputFile {
+	position: relative;
+	display: flex;
+    transition: 0.3s ease;
+    cursor: pointer;
+}
+.inputFileText {
+	padding: 0 10px;
+	line-height: 50px;
+	text-align: left;
+	height: 50px;
+	float: left;
+	box-sizing: border-box;
+	width: 294px;
+    color: var(--text-grey, #BBB5B5);
+    font-size: 20px;
+    font-weight: 600;
+    border-radius: 5px 0 0 5px;
+    border: 1px solid rgba(175, 172, 172, 0.40);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -moz-box;
+    display: -webkit-box;
+    line-clamp: 1;
+    box-orient: vertical;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+}
+.inputFileBtn {
+    position: relative;
+	display: inline-block;
+	outline: none;
+	text-decoration: none;
+	vertical-align: middle;
+	color: rgb(255 255 255);
+	text-align: center;
+	line-height: 32px;
+	height: 50px;
+	padding: 10px 20px;
+	box-sizing: border-box;
+	border: none;
+	margin: 0;
+	transition: background-color 0.2s;
+    font-size: 18px;
+    font-weight: 600;
+    border-radius: 0px 5px 5px 0px;
+    background: var(--grey-text-fields, rgba(175, 172, 172, 0.40));
+}
+.inputFile input[type=file] {
+	position: absolute;
+	z-index: -1;
+	opacity: 0;
+	display: block;
+	width: 0;
+	height: 0;
+}
+ 
+/* Hover/active */
+.inputFile:hover .inputFileBtn {
+	background: var(--stroke-light-grey-2, #DAD3D3);
+}
+.inputFile:active .inputFileFtn {
+	background: #DAD3D3;
+}
+
+.inputFile:hover .inputFileText {
+    color: var(--stroke-light-grey, #ADA6A6);
+}
+
+.inputFile:active .inputFileActive {
+    color: #958B8B;
+}
+
+@media screen and (max-width: 655px) {
+    .wrapper {
+        flex-direction: column;
+    }
+    .leftColumn, .rightColumn {
+        width: 100%;
+    }
+    .leftColumn {
+        margin-bottom: 40px;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+    }
+    .buttons {
+        flex-direction: column-reverse;
+    }
+    .cancel:first-child {
+        margin-bottom: 30px;
+    }
+    .inputFileText {
+        width: 73.5%;
+    }
+    .inputFileBtn {
+        width: 26.5%;
+        padding: 10px 1px;
+    }
+    .inputFile {
+        width: 100%;
+    }
+    .addButton {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+}

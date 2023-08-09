@@ -40,3 +40,13 @@
     opacity: 0.5;
     color: #000000;
 }
+
+@media screen and (max-width: 330px) {
+    .header {
+        flex-direction: column-reverse;
+        text-align: center;
+    }
+    .exit {
+        margin-bottom: 20px;
+    }
+}

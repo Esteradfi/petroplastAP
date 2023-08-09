@@ -24,9 +24,9 @@ const AddCategoryModal = () => {
                 <button onClick={closeModal} className={styles.button + " " + styles.cancel}>
                     Отмена
                 </button>
-                <button onClick={closeModal} className={styles.button + " " + styles.done}>
-                    <NavLink to="/newcategory">Перейти</NavLink>
-                </button>
+                <NavLink onClick={closeModal} className={styles.button + " " + styles.done} to="/newcategory">
+                    Перейти
+                </NavLink>
             </div>
         </div>
     )
