@@ -1,14 +1,16 @@
-import { useAppDispatch } from "../../../../redux/hooks";
-import { changeIsOpen, clearModals } from "../../../../redux/modals-window-reducer";
+import { NavLink } from "react-router-dom";
+import { useAppDispatch, useAppSelector } from "../../../../redux/hooks";
+import { changeIsOpen, clearModals, setModalDataPath } from "../../../../redux/modals-window-reducer";
 import styles from "./../Modal.module.css";
 
 const AddProductModal = () => {
-
+    let path = useAppSelector(state => state.modals.modalData.path);
     const dispatch = useAppDispatch();
 
     const closeModal = () => {
         dispatch(changeIsOpen(false));
         dispatch(clearModals());
+        dispatch(setModalDataPath(''));
     }
 
     return (
@@ -23,9 +25,9 @@ const AddProductModal = () => {
                 <button onClick={closeModal} className={styles.button + " " + styles.cancel}>
                     Отмена
                 </button>
-                <button className={styles.button + " " + styles.done}>
+                <NavLink to={path + '/add'} onClick={closeModal} className={styles.button + " " + styles.done}>
                     Перейти
-                </button>
+                </NavLink>
             </div>
         </div>
     )

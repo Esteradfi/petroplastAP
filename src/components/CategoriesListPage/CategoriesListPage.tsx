@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { Navigate } from "react-router-dom";
 import { CategoriesItem, getCategoriesThunk } from "../../redux/categories-reducer";
 import { changeTitle } from "../../redux/header-reducer";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
@@ -29,6 +30,7 @@ const CategoriesListPage = () => {
 
     return (
         <article>
+            <Navigate to="/categories" />
             {categoriesItems.length > 0 ? <div className={styles.listWrapper}>{categoriesItems}</div>
                     : <h2 className={styles.emptyTitle}>Категорий нет. Добавьте новые категории.</h2>}
             <div className={styles.buttons}>

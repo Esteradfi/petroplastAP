@@ -20,7 +20,7 @@
     width: 100%;
     max-height: 400px;
     max-width: 400px;
-    object-fit: cover;
+    object-fit: scale-down;
     aspect-ratio: 1;
     margin-bottom: 30px;
 }
@@ -73,6 +73,7 @@
 .input::placeholder {
     font-weight: 600;
     color: var(--text-grey, #BBB5B5);
+    font-family: "Montserrat Variable";
 }
 
 @media screen and (max-width: 835px) {
@@ -93,6 +94,10 @@
     position: relative;
 }
 
+.firstColumn, .columns {
+    position: relative;
+}
+
 .addButton {
     border-radius: 10px;
     background: var(--orange-buttons-and-text, #F60);
@@ -106,12 +111,16 @@
     min-width: 250px;
 }
 
-.addButton:hover {
+.addButton:hover, .addProduct:hover {
     background: var(--orange-hover, #FF822F);
 }
 
-.addButton:active {
+.addButton:active, .addProduct:active {
     background: var(--orange-active, #F96E42);
+}
+
+.inputFiles {
+    margin-top: 30px;
 }
 
 .inputFile {
@@ -170,7 +179,7 @@
 	width: 0;
 	height: 0;
 }
- 
+
 /* Hover/active */
 .inputFile:hover .inputFileBtn {
 	background: var(--stroke-light-grey-2, #DAD3D3);
@@ -185,6 +194,158 @@
 
 .inputFile:active .inputFileActive {
     color: #958B8B;
+}
+
+.form {
+    display: flex;
+    justify-content: space-between;
+    gap: 8.33%;
+    margin-top: 30px;
+}
+
+.form .input {
+    width: 100%;
+    font-size: 18px;
+}
+
+.columns {
+    display: flex;
+    justify-content: space-between;
+    gap: 14.29%;
+    max-width: 700px;
+    margin-top: 30px;
+}
+
+.firstColumn {
+    max-width: 400px;
+}
+
+.sliderWrapper {
+    position: relative;
+}
+
+.column {
+    width: 50%;
+}
+
+@media screen and (max-width: 1000px) {
+    .columns {
+        flex-direction: column;
+    }
+    .column {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 755px) {
+    .form {
+        flex-direction: column-reverse;
+        align-items: center;
+    }
+    .firstColumn {
+        margin-top: 30px;
+    }
+    .column {
+        width: 100%;
+        max-width: 400px;
+    }
+}
+
+@media screen and (max-width: 410px) {
+    .firstColumn {
+        max-width: 100%;
+    }
+}
+
+.subtitle {
+    color: #000;
+    /* Text medium 18pt */
+    font-family: Montserrat;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 130%; /* 23.4px */
+    margin-top: 0;
+    margin-bottom: 30px;
+}
+
+.column *:not(:last-child) {
+    margin-bottom: 30px;
+}
+
+.column .inputsGroup {
+    display: flex;
+    margin: 0;
+    max-width: 100%;
+}
+
+.column .block {
+    margin-bottom: 0;
+}
+
+.column .inputsGroup .input {
+    max-width: 33.33%;
+    min-width: auto;
+    border-radius: 0;
+}
+
+.column .inputsGroup .input:first-child {
+    border-radius: 5px 0 0 5px;
+}
+
+.column .inputsGroup .input:last-child {
+    margin-bottom: 30px;
+    border-radius: 0 5px 5px 0;
+}
+
+.colorBlock {
+    position: relative;
+}
+
+.colorButton {
+    position: absolute;
+    right: 1px;
+    top: 1%;
+    height: 60%;
+    border-radius: 0 5px 5px 0;
+    color: var(--white, #FFF);
+    font-size: 16px;
+    font-weight: 600;
+    border: none;
+    background: var(--grey-text-fields, rgba(175, 172, 172, 0.40))
+}
+
+.textarea {
+    resize: vertical;
+    padding: 25px;
+    min-height: 120px;
+    margin: 30px 0;
+}
+
+.addProduct {
+    border-radius: 10px;
+    background: var(--orange-buttons-and-text, #F60);
+    color: #FFF;
+    padding: 17px 14px;
+    /* Button text 3 */
+    font-family: Montserrat;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 130%; /* 26px */
+    outline: none;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.pageForm {
+    margin-bottom: 50px;
+}
+
+.inputsGroupSecond .input {
+    width: 50%;
+    max-width: 50% !important;
 }
 
 @media screen and (max-width: 655px) {

@@ -1,8 +1,9 @@
-import styles from "./CategoriesListItem.module.css";
-import { useAppDispatch } from "../../../redux/hooks";
-import { changeIsOpen, changeIsRemoveCategory, setModalData } from "../../../redux/modals-window-reducer";
 import { NavLink } from "react-router-dom";
 import { setSelectedCategory } from "../../../redux/categories-reducer";
+import { useAppDispatch } from "../../../redux/hooks";
+import { changeIsOpen, changeIsRemoveCategory, setModalData } from "../../../redux/modals-window-reducer";
+import selectedImage from "./../../../assets/icons/selected.png";
+import styles from "./CategoriesListItem.module.css";
 
 const CategoriesListItem = ({...el}) => {
     const dispatch = useAppDispatch();
@@ -26,10 +27,16 @@ const CategoriesListItem = ({...el}) => {
 
     return (
         <div className={styles.item}>
-            <img className={styles.image} src={el.image} alt="Категория" />
-            <h3 className={styles.title}>
-                {el.name}
-            </h3>
+            <div className={styles.content}>
+                {el.checkbox && <img className={styles.selectedImage} src={selectedImage} alt="Выбрано" />}
+                <img className={styles.image} src={el.image} alt="Категория" />
+                <h3 className={styles.title}>
+                    {el.name}
+                </h3>
+                <NavLink to={'/categories/' + el.name} className={styles.hiddenElement}>
+                    Посмотреть товары
+                </NavLink>
+            </div>
             <div className={styles.buttons}>
                 <NavLink to="/editcategory" onClick={onEditCategoryButton} className={styles.button + " " + styles.edit}>
                     Редактировать

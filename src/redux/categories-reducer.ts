@@ -74,7 +74,6 @@ export const postNewCategoryThunk = createAsyncThunk(
         }
         catch (err: any) {
             alert(err.response.data.message);
-            console.log(err)
         }
     }
 )
@@ -88,7 +87,6 @@ export const updateCategoryThunk = createAsyncThunk(
         }
         catch (err: any) {
             alert(err.response.data.message);
-            console.log(err)
         }
     }
 )
@@ -135,7 +133,11 @@ export const CategoriesSlice = createSlice({
     extraReducers: (builder) => {
         builder
         .addCase(getCategoriesThunk.fulfilled, (state, action) => {
-            state.categoriesList = action.payload.reverse();
+            if(action.payload) {
+                state.categoriesList = action.payload.reverse();
+            } else {
+                state.categoriesList = action.payload;
+            }
         })
         .addCase(postNewImageThunk.fulfilled, (state, action) => {
             state.selectedImage = action.payload;
@@ -146,13 +148,11 @@ export const CategoriesSlice = createSlice({
             if(action.payload !== undefined) {
                 state.addCategoryDone = true;
             }
-            console.log()
         })
         .addCase(updateCategoryThunk.fulfilled, (state, action) => {
             if(action.payload !== undefined) {
                 state.editCategoryDone = true;
             }
-            console.log()
         })
         .addCase(deleteCategoryThunk.fulfilled, (state, action) => {
             let index = state.categoriesList.findIndex(el => el._id === action.payload);

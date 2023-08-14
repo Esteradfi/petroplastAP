@@ -91,20 +91,20 @@
     height: 39px;
 }
 
-.grayButton {
-    background: #B4B4B4;
+.button {
+    background: var(--shapes-grey-fill, #B4B4B4);
     color: #ffffff;
     border: 1px solid transparent;
 }
 
-.grayButton:hover {
-    border: 1px solid rgba(153, 149, 149, 0.60);
+.button:hover {
+    background: var(--shapes-grey-fill, #B4B4B4);
 }
 
-.grayButton:active, .grayButton:focus {
-    background: rgba(114, 107, 107, 0.60);
-}
+.button:active, .button:focus {
+    background: var(--shapes-grey-5-active, #726b6b);
 
+}
 .formLink {
     color: #828282;
     font-size: 0.75rem;

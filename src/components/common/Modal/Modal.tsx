@@ -1,5 +1,6 @@
 import { useAppSelector } from "../../../redux/hooks";
 import AddCategoryModal from "./AddCategoryModal/AddCategoryModal";
+import AddProductModal from "./AddProductModal/AddProductModal";
 import DoneCategoryModal from "./DoneAddCategoryModal/DoneAddCategoryModal";
 import DoneEditCategoryModal from "./DoneEditCategoryModal/DoneEditCategoryModal";
 import styles from "./Modal.module.css";
@@ -9,7 +10,7 @@ const Modal = () => {
     let modalType = useAppSelector(state => state.modals);
     return (
         <div className={styles.modalWindow}>
-            {modalType.isAddCategory ? <AddCategoryModal /> : modalType.isRemoveCategory ? <RemoveCategoryModal /> : modalType.isDoneAddCategory ? <DoneCategoryModal /> : modalType.isDoneEditCategory ? <DoneEditCategoryModal /> : null}
+            {modalType.isAddCategory ? <AddCategoryModal /> : modalType.isRemoveCategory ? <RemoveCategoryModal /> : modalType.isDoneAddCategory ? <DoneCategoryModal /> : modalType.isDoneEditCategory ? <DoneEditCategoryModal /> : modalType.isAddProduct ? <AddProductModal /> : null}
         </div>
     )
 }

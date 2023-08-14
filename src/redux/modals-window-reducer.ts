@@ -14,6 +14,7 @@ export interface ModalsState {
     isOpen: boolean,
     modalData: {
         id: string
+        path?: string,
     }
 };
 
@@ -70,6 +71,9 @@ export const ModalsSlice = createSlice({
         setModalData: (state, action: PayloadAction<string>) => {
             state.modalData.id = action.payload;
         },
+        setModalDataPath: (state, action: PayloadAction<string>) => {
+            state.modalData.path = action.payload;
+        },
         clearModals: (state) => {
             state.isRemoveCategory = false;
             state.isRemoveProduct = false;
@@ -80,7 +84,8 @@ export const ModalsSlice = createSlice({
             state.isDoneEditCategory = false;
             state.isViewCategory = false;
             state.isNotViewCategory = false;
-            state.modalData.id = ''
+            state.modalData.id = '';
+            state.modalData.path = '';
         },
     }
 });
@@ -89,4 +94,4 @@ export default ModalsSlice.reducer;
 
 export const {changeIsRemoveCategory, changeIsRemoveProduct, changeIsAddCategory, changeIsAddProduct,
                 changeIsDoneAddCategory, changeIsDoneAddProduct, changeIsViewCategory, changeIsNotViewCategory,
-                changeIsOpen, clearModals, setModalData, changeIsDoneEditCategory} = ModalsSlice.actions;
+                changeIsOpen, clearModals, setModalData, changeIsDoneEditCategory, setModalDataPath} = ModalsSlice.actions;

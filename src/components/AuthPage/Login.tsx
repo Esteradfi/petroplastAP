@@ -1,15 +1,15 @@
-import styles from "./AuthPage.module.css";
-import { useForm, SubmitHandler } from "react-hook-form";
-import { postLoginThunk, AuthValues } from "../../redux/auth-reducer";
+import { SubmitHandler, useForm } from "react-hook-form";
+import { AuthValues, postLoginThunk } from "../../redux/auth-reducer";
 import { useAppDispatch } from "../../redux/hooks";
 import logotype from "./../../assets/images/logo.png";
+import styles from "./AuthPage.module.css";
 
 const Login = () => {
     const dispatch = useAppDispatch();
 
     const {
         register,
-        formState: {errors},
+        formState: {errors, isValid},
         handleSubmit,
         reset
     } = useForm<AuthValues>();
@@ -28,7 +28,7 @@ const Login = () => {
                 <img className={styles.logo} src={logotype} alt="Логотип" />
             </article>
             <h3 className={styles.title}>
-                Войдите в личный кабинет    
+                Войдите в личный кабинет
             </h3>
             <form onSubmit={handleSubmit(onSubmit)}>
                 <div className={styles.inputsBlock}>
@@ -44,9 +44,9 @@ const Login = () => {
                     </div>
                 </div>
                 <div className={styles.formRow}>
-                    <input type="submit" className={styles.shortButton + " " + styles.grayButton + " " + styles.submitButton} value="Войти" />
-                </div>    
-            </form>   
+                    <input type="submit" disabled={!isValid} className={styles.shortButton + " " + styles.button + " " + styles.submitButton} value="Войти" />
+                </div>
+            </form>
         </section>
     )
 };

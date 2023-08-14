@@ -1,10 +1,10 @@
 body {
-  font-family: "Montserrat", sans-serif;
+  font-family: "Montserrat Variable", "Montserrat", sans-serif;
   margin: 0;
 }
 
 button {
-  font-family: "Montserrat";
+  font-family: "Montserrat Variable", "Montserrat";
   cursor: pointer;
   outline: none;
 }
@@ -96,11 +96,112 @@ a:active {
 
 input[type=submit]:disabled {
   opacity: 0.5;
+  background: #B4B4B4;
   pointer-events: none;
 }
 
+
+.swiper {
+  position: static;
+}
+
+.swiper-slide {
+  display: flex;
+  flex-direction: column;
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+position: absolute;
+top: 47%;
+transform: translateY(-50%);
+background-color: rgba(222, 222, 222, 0.4);
+width: 40px;
+height: 40px;
+border-radius: 50%;
+color: #ffffff;
+font-size: 24px;
+display: flex;
+justify-content: center;
+align-items: center;
+cursor: pointer;
+transition: background-color 0.3s ease;
+z-index: 2;
+}
+
+.swiper-button-prev:hover,
+.swiper-button-next:hover {
+  background-color: rgba(173, 166, 166, 0.4)
+  ;
+}
+
+.swiper-button-prev:active,
+.swiper-button-next:active {
+  background-color: rgba(82, 82, 82, 0.4)
+  ;
+}
+
+.swiperButton {
+position: absolute;
+top: 50%;
+transform: translateY(-50%);
+z-index: 10;
+width: 40px;
+height: 40px;
+}
+
+.swiper-button-prev {
+left: -4.9%;
+background-position: center;
+background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="39" height="36" viewBox="0 0 39 36" fill="none"><g clip-path="url(%23clip0_351_443)"><path d="M16.9815 27.6601L6.69922 18.0001L16.9815 8.34008C17.0744 8.22611 17.1924 8.13211 17.3275 8.06446C17.4626 7.99681 17.6117 7.95707 17.7646 7.94795C17.9176 7.93883 18.0709 7.96053 18.2141 8.01159C18.3573 8.06265 18.4871 8.14187 18.5947 8.24388C18.7023 8.3459 18.7852 8.46834 18.8378 8.60291C18.8904 8.73747 18.9114 8.88102 18.8995 9.02385C18.8875 9.16667 18.8429 9.30542 18.7686 9.43072C18.6943 9.55602 18.592 9.66493 18.4688 9.75008L10.7758 17.0001L31.2441 17.0001C31.5278 17.0001 31.8 17.1054 32.0006 17.293C32.2013 17.4805 32.314 17.7349 32.314 18.0001C32.314 18.2653 32.2013 18.5197 32.0006 18.7072C31.8 18.8947 31.5278 19.0001 31.2441 19.0001L10.7758 19.0001L18.4688 26.2501C18.6688 26.4384 18.7807 26.6933 18.7796 26.9586C18.7786 27.224 18.6649 27.4781 18.4634 27.6651C18.2619 27.8521 17.9892 27.9566 17.7053 27.9556C17.4214 27.9547 17.1495 27.8484 16.9494 27.6601L16.9815 27.6601Z" fill="black"/></g><defs><clipPath id="clip0_351_443"><rect width="36" height="38.5185" fill="white" transform="matrix(4.37114e-08 1 1 -4.37114e-08 0.279297 0)"/></clipPath></defs></svg>');
+}
+
+.swiper-button-next {
+right: -4.9%;
+background-position: center;
+background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="39" height="36" viewBox="0 0 39 36" fill="none"><g clip-path="url(%23clip0_351_437)"><path d="M21.8173 27.6601L32.0996 18.0001L21.8173 8.34008C21.7244 8.22611 21.6065 8.13211 21.4714 8.06446C21.3362 7.99681 21.1872 7.95707 21.0342 7.94795C20.8812 7.93883 20.7279 7.96053 20.5847 8.01159C20.4415 8.06265 20.3117 8.14187 20.2041 8.24388C20.0965 8.3459 20.0136 8.46834 19.961 8.60291C19.9084 8.73747 19.8874 8.88102 19.8994 9.02385C19.9113 9.16667 19.9559 9.30542 20.0302 9.43072C20.1046 9.55602 20.2068 9.66493 20.3301 9.75008L28.0231 17.0001L7.55475 17.0001C7.27098 17.0001 6.99884 17.1054 6.79818 17.293C6.59752 17.4805 6.48479 17.7349 6.48479 18.0001C6.48479 18.2653 6.59752 18.5197 6.79818 18.7072C6.99884 18.8947 7.27098 19.0001 7.55475 19.0001L28.0231 19.0001L20.3301 26.2501C20.13 26.4384 20.0182 26.6933 20.0192 26.9586C20.0202 27.224 20.1339 27.4781 20.3354 27.6651C20.5369 27.8521 20.8096 27.9566 21.0935 27.9556C21.3774 27.9547 21.6493 27.8484 21.8494 27.6601L21.8173 27.6601Z" fill="black"/></g><defs><clipPath id="clip0_351_437"><rect width="36" height="38.5185" fill="white" transform="translate(38.5195) rotate(90)"/></clipPath></defs></svg>');
+}
+
+.arrowLeft:before,
+.arrowRight:before {
+content: '';
+width: 10px;
+height: 10px;
+border-bottom: 2px solid #fff;
+border-right: 2px solid #fff;
+transform: rotate(-45deg);
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+transition: border-color 0.3s ease;
+}
+
+.arrowRight:before {
+transform: rotate(135deg);
+}
+
+.swiper-button-prev:hover:before,
+.swiper-button-next:hover:before {
+border-color: rgba(255, 255, 255, 0.8);
+}
+
+
+
 @media screen and (max-width: 1220px) {
   .container {
+    padding: 0 20px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .container {
     padding: 0 10px;
+  }
+  .swiper-button-prev {
+    left: 0;
+  }
+  .swiper-button-next {
+    right: 0;
   }
 }

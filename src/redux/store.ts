@@ -1,15 +1,17 @@
-import {configureStore} from "@reduxjs/toolkit";
+import { configureStore } from "@reduxjs/toolkit";
 import authReducer from "./auth-reducer";
+import categoriesReducer from "./categories-reducer";
 import headerReducer from "./header-reducer";
 import modalsWindowReducer from "./modals-window-reducer";
-import categoriesReducer from "./categories-reducer";
+import productsReducer from "./products-reducer";
 
 export const store = configureStore({
     reducer: {
         auth: authReducer,
         header: headerReducer,
         modals: modalsWindowReducer,
-        categories: categoriesReducer
+        categories: categoriesReducer,
+        products: productsReducer,
     },
 });
 

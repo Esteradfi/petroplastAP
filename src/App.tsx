@@ -1,8 +1,10 @@
-import { Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 import './App.css';
 import AddCategoryPage from './components/AddCategoryPage/AddCategoryPage';
 import Login from './components/AuthPage/Login';
 import CategoriesListPage from './components/CategoriesListPage/CategoriesListPage';
+import AddProductPage from './components/CategoriesListPage/CategoryPage/AddProductPage/AddProductPage';
+import CategoryPage from './components/CategoriesListPage/CategoryPage/CategoryPage';
 import EditCategoryPage from './components/EditCategoryPage/EditCategoryPage';
 import Header from './components/common/Header/Header';
 import Modal from './components/common/Modal/Modal';
@@ -34,6 +36,9 @@ function App() {
                 {isAuth && <Header />}
                   <Routes>
                       <Route path='/' element={<CategoriesListPage />} />
+                      <Route path='/categories' element={<CategoriesListPage />} />
+                      <Route path='/categories/:products' element={<CategoryPage />} />
+                      <Route path='/categories/:products/add' element={<AddProductPage />} />
                       <Route path='/newcategory' element={<AddCategoryPage />} />
                       <Route path='/editcategory' element={<EditCategoryPage />} />
                   </Routes>
@@ -49,9 +54,11 @@ function App() {
       <main>
         <Routes>
           <Route path='/' element={<Login />} />
+          <Route path='/category' element={<Login />} />
           <Route path='/newcategory' element={<Login />} />
           <Route path='/editcategory' element={<Login />} />
         </Routes>
+        <Navigate to="/" />
       </main>
     )
   }

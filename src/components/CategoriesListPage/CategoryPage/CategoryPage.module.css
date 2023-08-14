@@ -1,0 +1,151 @@
+.breadcrumbsWrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 30px 0;
+}
+
+.breadcrumbs {
+    display: flex;
+    align-items: center;
+}
+
+.breadcrumb {
+    color: var(--dark-grey, #505050);
+    font-size: 20px;
+    font-weight: 300;
+}
+
+.image {
+    margin: 0 30px;
+}
+
+.addButton {
+    color: var(--red-buttons-and-text, #E51428);
+    font-size: 18px;
+    font-weight: 600;
+    border: none;
+    padding: 0;
+    background: transparent;
+    transition: 0.3s ease;
+}
+
+.addButton:hover {
+    color: var(--bright-red, #FF0018);
+}
+
+.addButton:active {
+    color: var(--dark-red, #CA1527);
+}
+
+.productsSearchBlock {
+    background: var(--orange-buttons-and-text, #F60);
+    border-radius: 13px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: 10px 13px;
+    box-sizing: border-box;
+    margin-bottom: 30px;
+}
+
+.searchTitle {
+    color: var(--white, #FFF);
+    font-size: 20px;
+    font-weight: 600;
+    margin-right: 50px;
+}
+
+.searchInputBlock {
+    position: relative;
+    width: 450px;
+}
+
+.searchInput {
+    border-radius: 10px;
+    background: var(--fill-light-grey, #F0EFEF);
+    padding: 8px 11px 8px 26px;
+    outline: none;
+    border: none;
+    transition: 0.3s ease;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.searchInput:hover {
+    background: var(--grey-text-fields, #afacac);
+}
+
+.searchInput:active {
+    background: var(--fill-light-grey, #F0EFEF);
+}
+
+.searchInput::placeholder {
+    color: var(--orange-buttons-and-text, #F60);
+}
+
+.searchInput, .searchInput::placeholder {
+    font-family: Montserrat;
+    font-size: 20px;
+    font-weight: 400;
+    font-weight: 600;
+}
+
+.searchButton {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    background: transparent;
+    right: 0;
+    top: 51%;
+    transform: translate(0, -50%);
+    border: none;
+    outline: none;
+}
+
+.listWrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3.3333334%;
+}
+
+.emptyTitle {
+    text-align: center;
+    margin-bottom: 60px;
+    margin-top: 60px;
+}
+
+@media screen and (max-width: 820px) {
+    .breadcrumbsWrapper {
+        flex-direction: column;
+    }
+    .breadcrumbs {
+        flex-direction: column;
+        margin-bottom: 15px;
+    }
+    .breadcrumb {
+        margin-bottom: 5px;
+        display: inline-block;
+    }
+    .breadcrumb:last-child {
+        margin-top: 5px;
+        margin-bottom: 0;
+    }
+    .image {
+        margin: 0;
+        transform: rotate(90deg);
+    }
+    .searchInputBlock {
+        width: auto;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .productsSearchBlock {
+        flex-direction: column;
+    }
+    .searchTitle {
+        margin: 0 0 20px 0;
+    }
+}

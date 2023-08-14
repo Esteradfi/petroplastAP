@@ -23,7 +23,6 @@ const EditCategoryPage = () => {
         register,
         formState: {errors, isValid},
         handleSubmit,
-        reset
     } = useForm<CategoriesItem>({defaultValues: {
         checkbox: selectedCategory.checkbox,
         name: selectedCategory.name,
@@ -42,12 +41,6 @@ const EditCategoryPage = () => {
         data._id = selectedCategory._id;
         data.image = uploadedImage !== '' ? uploadedImage : data.image;
         dispatch(updateCategoryThunk(data));
-        reset({
-            name: '',
-            checkbox: false
-        })
-        dispatch(clearSelectedImage());
-        dispatch(clearSelectedCategory());
     }
 
     const openRemoveCategoryModal = () => {
@@ -56,14 +49,19 @@ const EditCategoryPage = () => {
         dispatch(changeIsRemoveCategory(true));
     }
 
+    const clearEditPage = () => {
+        dispatch(clearSelectedImage());
+        dispatch(clearSelectedCategory());
+    }
+
     useEffect(() => {
         if(isEditDone) {
             dispatch(changeIsOpen(true));
             dispatch(changeIsDoneEditCategory(true));
         }
-    })
+    }, [isEditDone])
 
-    if(!image) {
+    if(!selectedCategory._id) {
         return <Navigate to='/' />
     }
 
@@ -71,7 +69,7 @@ const EditCategoryPage = () => {
         <article className={styles.article}>
             <div className={styles.wrapper}>
                 <div className={styles.leftColumn}>
-                    <img className={styles.image} src={image || emptyImage} alt="Изображение" />
+                    <img className={styles.image} src={uploadedImage || image || emptyImage} alt="Изображение" />
                     <label className={styles.inputFile}>
                         <span className={styles.inputFileText}>{uploadedImage || 'Загрузите изображение'}</span>
                         <input onChange={uploadImage} type="file" accept="image/*" id="file"/>
@@ -98,7 +96,7 @@ const EditCategoryPage = () => {
                 </form>
             </div>
             <div className={styles.buttons}>
-                <NavLink className={styles.cancel} to="/">Отмена</NavLink>
+                <NavLink onClick={clearEditPage} className={styles.cancel} to="/">Отмена</NavLink>
                 <button onClick={openRemoveCategoryModal} className={styles.cancel}>Удалить категорию</button>
             </div>
         </article>

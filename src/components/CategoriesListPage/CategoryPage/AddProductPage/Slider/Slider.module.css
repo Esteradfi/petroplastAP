@@ -1,0 +1,11 @@
+.delete {
+    color: var(--red-buttons-and-text, #E51428);
+    font-size: 18px;
+    font-weight: 600;
+    text-align: center;
+    background: transparent;
+    border: none;
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+}

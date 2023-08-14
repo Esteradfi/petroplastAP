@@ -4,12 +4,48 @@
     background: #ffffff;
 }
 
+.content {
+    position: relative;
+    cursor: pointer;
+}
+
+.hiddenElement {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(255, 255, 255, 0);
+    opacity: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.3s ease;
+    font-weight: 600;
+}
+
+.hiddenElement:hover {
+    opacity: 1;
+    background-color: rgba(255, 255, 255, 0.8);
+    color: var(--stroke-light-grey, #ADA6A6);
+}
+
+.hiddenElement:active {
+    color: var(--grey-active, #525252);
+}
+
+.selectedImage {
+    position: absolute;
+    top: 6px;
+    left: 6px;
+}
+
 .image {
     border-radius: 10px 10px 0px 0px;
     width: 100%;
     max-height: 158px;
     aspect-ratio: 255.38/149.44;
-    object-fit: cover;
+    object-fit: scale-down;
     background: #ffffff;
 }
 
