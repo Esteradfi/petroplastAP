@@ -9,12 +9,14 @@ export interface ModalsState {
     isDoneAddCategory: boolean,
     isDoneAddProduct: boolean,
     isDoneEditCategory: boolean,
+    isDoneEditProduct: boolean,
     isViewCategory: boolean,
     isNotViewCategory: boolean,
     isOpen: boolean,
     modalData: {
         id: string
         path?: string,
+        category?: string
     }
 };
 
@@ -26,6 +28,7 @@ const initialState: ModalsState = {
     isDoneAddCategory: false,
     isDoneAddProduct: false,
     isDoneEditCategory: false,
+    isDoneEditProduct: false,
     isViewCategory: false,
     isNotViewCategory: false,
     isOpen: false,
@@ -59,6 +62,9 @@ export const ModalsSlice = createSlice({
         changeIsDoneEditCategory: (state, action: PayloadAction<boolean>) => {
             state.isDoneEditCategory = action.payload;
         },
+        changeIsDoneEditProduct: (state, action: PayloadAction<boolean>) => {
+            state.isDoneEditProduct = action.payload;
+        },
         changeIsViewCategory: (state, action: PayloadAction<boolean>) => {
             state.isViewCategory = action.payload;
         },
@@ -74,6 +80,9 @@ export const ModalsSlice = createSlice({
         setModalDataPath: (state, action: PayloadAction<string>) => {
             state.modalData.path = action.payload;
         },
+        setModalDataCategory: (state, action: PayloadAction<string>) => {
+            state.modalData.category = action.payload;
+        },
         clearModals: (state) => {
             state.isRemoveCategory = false;
             state.isRemoveProduct = false;
@@ -82,10 +91,12 @@ export const ModalsSlice = createSlice({
             state.isDoneAddCategory = false;
             state.isDoneAddProduct = false;
             state.isDoneEditCategory = false;
+            state.isDoneEditProduct = false;
             state.isViewCategory = false;
             state.isNotViewCategory = false;
             state.modalData.id = '';
             state.modalData.path = '';
+            state.modalData.category = '';
         },
     }
 });
@@ -94,4 +105,4 @@ export default ModalsSlice.reducer;
 
 export const {changeIsRemoveCategory, changeIsRemoveProduct, changeIsAddCategory, changeIsAddProduct,
                 changeIsDoneAddCategory, changeIsDoneAddProduct, changeIsViewCategory, changeIsNotViewCategory,
-                changeIsOpen, clearModals, setModalData, changeIsDoneEditCategory, setModalDataPath} = ModalsSlice.actions;
+                changeIsOpen, clearModals, setModalData, changeIsDoneEditCategory, setModalDataPath, setModalDataCategory, changeIsDoneEditProduct} = ModalsSlice.actions;

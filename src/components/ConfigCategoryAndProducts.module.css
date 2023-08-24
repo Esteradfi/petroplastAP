@@ -34,6 +34,7 @@
     background: transparent;
     outline: none;
     border: none;
+    margin-bottom: 30px;
 }
 
 .buttons {
@@ -92,6 +93,11 @@
     margin-bottom: 30px;
     display: block;
     position: relative;
+}
+
+.column .formElement {
+    position: relative;
+    display: block;
 }
 
 .firstColumn, .columns {
@@ -235,6 +241,14 @@
     .column {
         width: 100%;
     }
+    .colorBlock {
+        position: relative !important;
+        min-width: auto !important;
+        padding: 15px 5px 15px 6px !important;
+    }
+    .colorBlock .inner {
+        margin-right: 3px !important;
+    }
 }
 
 @media screen and (max-width: 755px) {
@@ -269,7 +283,7 @@
     margin-bottom: 30px;
 }
 
-.column *:not(:last-child) {
+.column label:not(:last-child) {
     margin-bottom: 30px;
 }
 
@@ -277,6 +291,7 @@
     display: flex;
     margin: 0;
     max-width: 100%;
+    margin-bottom: 30px;
 }
 
 .column .block {
@@ -289,37 +304,88 @@
     border-radius: 0;
 }
 
+.colorParam {
+    margin-bottom: 30px !important;
+    position: relative;
+}
+
 .column .inputsGroup .input:first-child {
     border-radius: 5px 0 0 5px;
 }
 
 .column .inputsGroup .input:last-child {
-    margin-bottom: 30px;
     border-radius: 0 5px 5px 0;
 }
 
 .colorBlock {
-    position: relative;
+    position: absolute;
+    margin-bottom: 30px;
+    border-radius: 10px;
+    min-width: 232px;
+    background: var(--objects-and-shapes-white, #FFF);
+    padding: 30px 22px 28px 44px;
+    /* Drop shadow default */
+    box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.25);
 }
 
-.colorButton {
-    position: absolute;
-    right: 1px;
-    top: 1%;
-    height: 60%;
-    border-radius: 0 5px 5px 0;
-    color: var(--white, #FFF);
-    font-size: 16px;
-    font-weight: 600;
+.colorBlock .inner {
+    max-height: 356px;
+    overflow-y: scroll;
+    padding-right: 9px;
+}
+
+.colorBlock .inner::-webkit-scrollbar {
+    width: 8px; /* ширина скроллбара */
+}
+
+.colorBlock .inner::-webkit-scrollbar-thumb {
+    background-color: #DAD3D3; /* цвет скроллбара */
+    border-radius: 4px;
+    transition: 0.3s ease;
+}
+
+.colorBlock .inner::-webkit-scrollbar-thumb:hover {
+    background-color: #B2ABAB;
+}
+
+.colorBlock .inner::-webkit-scrollbar-thumb:active {
+    background-color: #525252;
+}
+
+.colorBlock .inner::-webkit-scrollbar-track {
+    background-color: #fff; /* цвет трека скроллбара */
+}
+
+
+.colorReset {
+    margin-top: 10px;
+    padding: 12px 0;
+    border-radius: 10px;
+    background: var(--stroke-light-grey-2, #DAD3D3);
+    width: 100%;
+    /* Drop shadow default */
+    box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.25);
+    color: var(--dark-grey, #505050);
     border: none;
-    background: var(--grey-text-fields, rgba(175, 172, 172, 0.40))
+    outline: none;
+    font-size: 12px;
+    font-weight: 700;
+    transition: 0.3s ease;
+}
+
+.colorReset:hover {
+    background: var(--stroke-light-grey-2, #DAD3D3);
+}
+
+.colorReset:active {
+    background: var(--stroke-light-grey, #ADA6A6);
 }
 
 .textarea {
     resize: vertical;
     padding: 25px;
     min-height: 120px;
-    margin: 30px 0;
+    margin: 30px 0 0 0;
 }
 
 .addProduct {
@@ -337,10 +403,6 @@
     border: none;
     cursor: pointer;
     transition: 0.3s ease;
-}
-
-.pageForm {
-    margin-bottom: 50px;
 }
 
 .inputsGroupSecond .input {
@@ -380,5 +442,8 @@
     .addButton {
         width: 100%;
         margin-bottom: 20px;
+    }
+    .addProduct {
+        width: 100%;
     }
 }

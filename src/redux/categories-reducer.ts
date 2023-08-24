@@ -147,11 +147,20 @@ export const CategoriesSlice = createSlice({
         .addCase(postNewCategoryThunk.fulfilled, (state, action) => {
             if(action.payload !== undefined) {
                 state.addCategoryDone = true;
+                let item = action.payload || null;
+
+                state.categoriesList.reverse()[state.categoriesList.length] = item;
+                state.categoriesList.reverse();
             }
         })
         .addCase(updateCategoryThunk.fulfilled, (state, action) => {
             if(action.payload !== undefined) {
                 state.editCategoryDone = true;
+                let index = state.categoriesList.findIndex(el => el._id === action.payload._id);
+                let item = state.categoriesList[index];
+                item.name = action.payload.name;
+                item.image = action.payload.image;
+                state.categoriesList[index] = item;
             }
         })
         .addCase(deleteCategoryThunk.fulfilled, (state, action) => {

@@ -41,7 +41,7 @@
 }
 
 .addButton:hover {
-    background: var(--grey-text-fields, rgba(175, 172, 172, 0.40));
+    background: var(--grey-text-fields, #afacac);
 }
 
 .addButton:active {

@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { Navigate } from "react-router-dom";
-import { CategoriesItem, getCategoriesThunk } from "../../redux/categories-reducer";
+import { CategoriesItem } from "../../redux/categories-reducer";
 import { changeTitle } from "../../redux/header-reducer";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import { changeIsAddCategory, changeIsOpen } from "../../redux/modals-window-reducer";
@@ -20,16 +20,10 @@ const CategoriesListPage = () => {
         dispatch(changeTitle('Категории товаров'));
     }, []);
 
-    useEffect(() => {
-        dispatch(getCategoriesThunk());
-    }, []);
-
-
-
     let categoriesItems = categories.map((el: CategoriesItem) => <CategoriesListItem key={el._id} {...el} />)
 
     return (
-        <article>
+        <article className="container">
             <Navigate to="/categories" />
             {categoriesItems.length > 0 ? <div className={styles.listWrapper}>{categoriesItems}</div>
                     : <h2 className={styles.emptyTitle}>Категорий нет. Добавьте новые категории.</h2>}

@@ -4,27 +4,28 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { NavLink, useParams } from "react-router-dom";
 import { changeTitle } from "../../../../redux/header-reducer";
 import { useAppDispatch, useAppSelector } from "../../../../redux/hooks";
-import { changeIsDoneAddProduct, changeIsOpen, setModalData } from "../../../../redux/modals-window-reducer";
-import { Product, clearColors, clearSelectedImages, deleteImage, postNewProductThunk, postNewProductsImageThunk } from "../../../../redux/products-reducer";
+import { changeIsDoneEditProduct, changeIsOpen, changeIsRemoveProduct, setModalData, setModalDataCategory } from "../../../../redux/modals-window-reducer";
+import { Product, changeColor, clearColors, clearSelectedImages, deleteImage, patchProductThunk, postNewProductsImageThunk } from "../../../../redux/products-reducer";
 import emptyImage from "./../../../../assets/images/emptyImage.jpg";
 import styles from "./../../../ConfigCategoryAndProducts.module.css";
-import ColorItem from "./ColorItem/ColorItem";
-import Slider from "./Slider/Slider";
-import slideStyles from "./Slider/Slider.module.css";
+import ColorItem from "./../AddProductPage/ColorItem/ColorItem";
+import Slider from "./../AddProductPage/Slider/Slider";
+import slideStyles from "./../AddProductPage/Slider/Slider.module.css";
 
-const AddProductPage = () => {
+const EditProductPage = () => {
     const dispatch = useAppDispatch();
     let uploadedImages = useAppSelector(state => state.products.selectedImages);
-    let colorsList = useAppSelector(state => state.products.colorsList);
     let selectedColors = useAppSelector(state => state.products.selectedColors);
+    let color = useAppSelector(state => state.products.color);
+    let colorsList = useAppSelector(state => state.products.colorsList);
     let category = useParams();
-    let isDone = useAppSelector(state => state.products.addProductDone);
-
+    let isDone = useAppSelector(state => state.products.editProductDone);
+    let product = useAppSelector(state => state.products.selectedProduct);
 
     let colorItems = colorsList.map((el: string) => <ColorItem key={el} el={el} />)
 
     useEffect(() => {
-        dispatch(changeTitle("Добавление товара"));
+        dispatch(changeTitle("Редактирование товара"));
     }, []);
 
     const {
@@ -33,7 +34,37 @@ const AddProductPage = () => {
         handleSubmit,
         reset
     } = useForm<Product>({
-        mode: "onChange"
+        mode: "onChange",
+        defaultValues: {
+            category: product.category,
+            article: product.article,
+            name: product.name,
+            colors:  product.colors,
+            material: product.material,
+            height: product.height,
+            width: product.width,
+            length: product.length,
+            weightBrutto: product.weightBrutto,
+            weightNetto: product.weightNetto,
+            retailPrice: product.retailPrice,
+            wholesalePrice: product.wholesalePrice,
+            quantityPerPackage: product.quantityPerPackage,
+            stockBalance: product.stockBalance,
+            images: product.images,
+            individualBarcode: product.individualBarcode,
+            generalBarcode: product.generalBarcode,
+            description: product.description,
+            volume: product.volume,
+            discount: product.discount,
+            productHeight: product.productHeight,
+            productWidth: product.productWidth,
+            productLength: product.productLength,
+            packageHeight: product.packageHeight,
+            packageWidth: product.packageWidth,
+            packageLength: product.packageLength,
+            __v: product.__v,
+            _id: product._id
+        }
     });
 
     const sendFile = (file: File) => {
@@ -55,21 +86,25 @@ const AddProductPage = () => {
         data.images = uploadedImages;
         data.colors = selectedColors;
         data.category = category.products;
-        data.width = +(data.width.split(',').join('.'));
-        data.length = +(data.length.split(',').join('.'));
-        data.height = +(data.height.split(',').join('.'));
-        data.weightNetto = +(data.weightNetto.split(',').join('.'));
-        data.weightBrutto = +(data.weightBrutto.split(',').join('.'));
-        data.retailPrice = +(data.retailPrice).split(',').join('.');
-        data.wholesalePrice = +(data.wholesalePrice.split(',').join('.'));
-        data.quantityPerPackage = +(data.quantityPerPackage.split(',').join('.'));
-        data.stockBalance = +(data.stockBalance.split(',').join('.'));
-        data.volume = +(data.volume.split(',').join('.'));
-        data.packageLength = +(data.packageLength.split(',').join('.'));
-        data.packageWidth = +(data.packageWidth.split(',').join('.'));
-        data.packageHeight = +(data.packageHeight.split(',').join('.'));
-        dispatch(postNewProductThunk(data));
-        //dispatch(clearSelectedImages())
+        data.weightNetto = +(data.weightNetto.toString().split(',').join('.'));
+        data.weightBrutto = +(data.weightBrutto.toString().split(',').join('.'));
+        data.retailPrice = +(data.retailPrice).toString().split(',').join('.');
+        data.wholesalePrice = +(data.wholesalePrice.toString().split(',').join('.'));
+        data.quantityPerPackage = +(data.quantityPerPackage.toString().split(',').join('.'));
+        data.stockBalance = +(data.stockBalance.toString().split(',').join('.'));
+        data.volume = +(data.volume.toString().split(',').join('.'));
+        data.packageLength = +(data.packageLength.toString().split(',').join('.'));
+        data.packageWidth = +(data.packageWidth.toString().split(',').join('.'));
+        data.packageHeight = +(data.packageHeight.toString().split(',').join('.'));
+        dispatch(patchProductThunk(data));
+    }
+
+    const onChangeColor = (e: React.ChangeEvent<HTMLInputElement>) => {
+        dispatch(changeColor(e.target.value));
+    }
+
+    const onAddColor = () => {
+        dispatch(changeColor(''));
     }
 
     const onDeleteImage = () => {
@@ -81,17 +116,26 @@ const AddProductPage = () => {
         dispatch(clearSelectedImages());
     }
 
-    const onClearColors = () => {
-        dispatch(clearColors());
-    }
-
     useEffect(() => {
         if(isDone) {
             dispatch(changeIsOpen(true));
-            dispatch(changeIsDoneAddProduct(true));
+            dispatch(changeIsDoneEditProduct(true));
             dispatch(setModalData(category.products || ''));
         }
     })
+
+    const openRemoveProductModal = () => {
+        if(product._id !== undefined) {
+            dispatch(setModalData(product._id));
+            dispatch(setModalDataCategory(product.category));
+            dispatch(changeIsOpen(true));
+            dispatch(changeIsRemoveProduct(true));
+        }
+    }
+
+    const onClearColors = () => {
+        dispatch(clearColors());
+    }
 
     return (
         <div className={"container " + styles.pageForm}>
@@ -118,12 +162,12 @@ const AddProductPage = () => {
                             })}></textarea>
                             {errors?.description && <p className="errorMessage2">{errors?.description?.message || "Ошибка заполнения"}</p>}
                     </label>
-                    <input className={styles.addProduct} disabled={!isValid || uploadedImages.length === 0 || selectedColors.length === 0} type="submit" value="Добавить товар" /
+                    <input className={styles.addProduct} disabled={!isValid || uploadedImages.length === 0 || selectedColors.length === 0} type="submit" value="Сохранить" /
                     >
                 </div>
                 <div>
                     <h3 className={styles.title}>
-                        Введите характеристики товара
+                        Отредактируйте характеристики товара
                     </h3>
                     <div className={styles.columns}>
                         <div className={styles.column}>
@@ -269,7 +313,7 @@ const AddProductPage = () => {
                                 required: "Ошибка. Поле не заполнено",
                                 pattern: {
                                     value: /^[1-9]\d*$/,
-                                    message: 'Введите только целые числа',
+                                    message: 'Введите только числа',
                                 },
                             })}/>
                             {errors?.quantityPerPackage && <p className="errorMessage2">{errors?.quantityPerPackage?.message || "Ошибка заполнения"}</p>}
@@ -279,7 +323,7 @@ const AddProductPage = () => {
                                 required: "Ошибка. Поле не заполнено",
                                 pattern: {
                                     value: /^[1-9]\d*$/,
-                                    message: 'Введите только целые числа',
+                                    message: 'Введите только числа',
                                 },
                             })}/>
                             {errors?.stockBalance && <p className="errorMessage2">{errors?.stockBalance?.message || "Ошибка заполнения"}</p>}
@@ -292,7 +336,7 @@ const AddProductPage = () => {
                                 required: "Ошибка. Поле не заполнено",
                                 pattern: {
                                     value: /^[1-9]\d*$/,
-                                    message: 'Введите только целые числа',
+                                    message: 'Введите только числа',
                                 },
                             })} />
                             {errors?.individualBarcode && <p className="errorMessage2">{errors?.individualBarcode?.message || "Ошибка заполнения"}</p>}
@@ -302,7 +346,7 @@ const AddProductPage = () => {
                                 required: "Ошибка. Поле не заполнено",
                                 pattern: {
                                     value: /^[1-9]\d*$/,
-                                    message: 'Введите только целые числа',
+                                    message: 'Введите только числа',
                                 },
                             })}/>
                             {errors?.generalBarcode && <p className="errorMessage2">{errors?.generalBarcode?.message || "Ошибка заполнения"}</p>}
@@ -315,9 +359,10 @@ const AddProductPage = () => {
             </form>
             <div className={styles.buttons}>
                 <NavLink onClick={onClearAddProductPage} className={styles.cancel} to={'/categories/' + category.products}>Отмена</NavLink>
+                <button onClick={openRemoveProductModal} className={styles.cancel}>Удалить товар</button>
             </div>
         </div>
     )
 }
 
-export default AddProductPage;
+export default EditProductPage;

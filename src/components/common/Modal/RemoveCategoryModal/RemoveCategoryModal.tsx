@@ -32,7 +32,7 @@ const RemoveCategoryModal = () => {
                 <button onClick={closeModal} className={styles.button + " " + styles.cancel}>
                     Отмена
                 </button>
-                <NavLink to="/" onClick={onRemoveCategory} className={styles.button + " " + styles.done}>
+                <NavLink to="/categories" onClick={onRemoveCategory} className={styles.button + " " + styles.done}>
                     Удалить
                 </NavLink>
             </div>

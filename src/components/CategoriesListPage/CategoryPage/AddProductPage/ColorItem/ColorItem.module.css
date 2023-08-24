@@ -1,37 +1,31 @@
 .item {
     width: 100%;
-    border-radius: 5px;
-    border: 1px solid var(--text-grey, #BBB5B5);
-
-    /* Drop shadow default */
-    box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.25);
-    color: var(--dark-grey, #505050);
-    font-size: 20px;
-    font-weight: 600;
-    padding: 12.5px 17px;
-    box-sizing: border-box;
-    position: relative;
-}
-
-.item button {
-    padding: 0;
-    line-height: normal;
-    max-height: 50px;
     display: flex;
     align-items: center;
-    position: absolute;
-    right: 0;
-    top: 0;
-    height: 100%;
-    border-radius: 0px 4px 4px 0px;
-    background: var(--stroke-light-grey-2, #DAD3D3);
-    border: none;
-    outline: none;
-    transition: 0.3s ease;
-    /* Drop shadow spread */
-    box-shadow: 0px 2px 2px 2px rgba(169, 163, 163, 0.25);
 }
 
-.item button:hover {
-    background: #C7BCBC;
+.label {
+    width: 100%;
+}
+
+.itemText {
+    color: #000;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.item:not(:last-child) {
+    margin-bottom: 15px;
+}
+
+
+.checkboxSpan::before {
+    margin-right: 0 !important;
+}
+
+.color {
+    width: 28.19px !important;
+    height: 28.19px !important;
+    border-radius: 100%;
+    margin: 0 15px;
 }

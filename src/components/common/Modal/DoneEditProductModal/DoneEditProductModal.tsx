@@ -1,10 +1,10 @@
 import { NavLink } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../../../redux/hooks";
 import { changeIsOpen, clearModals } from "../../../../redux/modals-window-reducer";
-import { clearAddProductDone, clearColors, clearSelectedImages } from "../../../../redux/products-reducer";
+import { clearColors, clearEditProductDone, clearSelectedImages } from "../../../../redux/products-reducer";
 import styles from "./../Modal.module.css";
 
-const DoneAddProductModal = () => {
+const DoneEditProductModal = () => {
 
     const category = useAppSelector(state => state.modals.modalData.id);
 
@@ -14,7 +14,7 @@ const DoneAddProductModal = () => {
     const closeModal = () => {
         dispatch(changeIsOpen(false));
         dispatch(clearModals());
-        dispatch(clearAddProductDone());
+        dispatch(clearEditProductDone());
         dispatch(clearColors());
         dispatch(clearSelectedImages());
     }
@@ -22,15 +22,12 @@ const DoneAddProductModal = () => {
     return (
         <div>
             <h3 className={styles.title}>
-                Товар добавлен!
+                Характеристики товара обновлены!
             </h3>
             <p className={styles.paragraph}>
-                Товар добавлен в категорию и отобразится на сайте.
+                Изменения добавлены и отобразятся на сайте.
             </p>
             <div className={styles.buttons}>
-                <button onClick={closeModal} className={styles.button + " " + styles.cancel}>
-                    Отмена
-                </button>
                 <NavLink to={'/categories/' + category} onClick={closeModal} className={styles.button + " " + styles.done}>
                     Продолжить
                 </NavLink>
@@ -39,4 +36,4 @@ const DoneAddProductModal = () => {
     )
 }
 
-export default DoneAddProductModal;
+export default DoneEditProductModal;

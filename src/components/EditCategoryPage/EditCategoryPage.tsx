@@ -66,7 +66,7 @@ const EditCategoryPage = () => {
     }
 
     return (
-        <article className={styles.article}>
+        <article className={"container " + styles.article}>
             <div className={styles.wrapper}>
                 <div className={styles.leftColumn}>
                     <img className={styles.image} src={uploadedImage || image || emptyImage} alt="Изображение" />

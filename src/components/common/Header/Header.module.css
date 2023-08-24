@@ -1,6 +1,7 @@
 .header {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     margin-top: 50px;
 }
 
@@ -41,12 +42,17 @@
     color: #000000;
 }
 
-@media screen and (max-width: 330px) {
+.navigationLink {
+    color: var(--orange-buttons-and-text, #F60);
+    font-weight: 600;
+}
+
+@media screen and (max-width: 760px) {
     .header {
         flex-direction: column-reverse;
         text-align: center;
     }
-    .exit {
+    .exit, .navigationLink {
         margin-bottom: 20px;
     }
 }

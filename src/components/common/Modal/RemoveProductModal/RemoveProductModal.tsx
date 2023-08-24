@@ -1,14 +1,23 @@
-import { useAppDispatch } from "../../../../redux/hooks";
-import { changeIsOpen, clearModals } from "../../../../redux/modals-window-reducer";
+import { NavLink } from "react-router-dom";
+import { useAppDispatch, useAppSelector } from "../../../../redux/hooks";
+import { changeIsOpen, clearModals, setModalDataPath } from "../../../../redux/modals-window-reducer";
+import { deleteProductThunk } from "../../../../redux/products-reducer";
 import styles from "./../Modal.module.css";
 
 const RemoveProductModal = () => {
-
+    let category = useAppSelector(state => state.modals.modalData.category);
     const dispatch = useAppDispatch();
+    let id = useAppSelector(state => state.modals.modalData.id);
 
     const closeModal = () => {
         dispatch(changeIsOpen(false));
         dispatch(clearModals());
+    }
+
+    const onRemoveProduct = () => {
+        dispatch(deleteProductThunk(id));
+        dispatch(setModalDataPath(''));
+        closeModal();
     }
 
     return (
@@ -23,9 +32,9 @@ const RemoveProductModal = () => {
                 <button onClick={closeModal} className={styles.button + " " + styles.cancel}>
                     Отмена
                 </button>
-                <button className={styles.button + " " + styles.done}>
+                <NavLink to={"/categories/" + category} onClick={onRemoveProduct} className={styles.button + " " + styles.done}>
                     Удалить
-                </button>
+                </NavLink>
             </div>
         </div>
     )
