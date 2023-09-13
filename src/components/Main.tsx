@@ -14,6 +14,7 @@ import DeliveryPage from "./DeliveryPage/DeliveryPage";
 import EditCategoryPage from "./EditCategoryPage/EditCategoryPage";
 import Header from "./common/Header/Header";
 import ScrollToTop from "./common/ScrollToTop/ScrollToTop";
+import {getBannersThunk} from "../redux/banners-reducer";
 
 const Main = () => {
     let isAuth = useAppSelector(state => state.auth.isAuth);
@@ -22,6 +23,7 @@ const Main = () => {
     useEffect(() => {
         dispatch(getCategoriesThunk());
         dispatch(getProductsThunk());
+        dispatch(getBannersThunk());
     }, []);
 
 

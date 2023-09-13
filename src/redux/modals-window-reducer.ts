@@ -6,6 +6,7 @@ export interface ModalsState {
     isRemoveProduct: boolean,
     isAddCategory: boolean,
     isAddProduct: boolean,
+    isDoneAddBanner: boolean,
     isDoneAddCategory: boolean,
     isDoneAddProduct: boolean,
     isDoneEditCategory: boolean,
@@ -25,6 +26,7 @@ const initialState: ModalsState = {
     isRemoveProduct: false,
     isAddCategory: false,
     isAddProduct: false,
+    isDoneAddBanner: false,
     isDoneAddCategory: false,
     isDoneAddProduct: false,
     isDoneEditCategory: false,
@@ -52,6 +54,9 @@ export const ModalsSlice = createSlice({
         },
         changeIsAddProduct: (state, action: PayloadAction<boolean>) => {
             state.isAddProduct = action.payload;
+        },
+        changeIsDoneAddBanner: (state, action: PayloadAction<boolean>) => {
+            state.isDoneAddBanner = action.payload;
         },
         changeIsDoneAddCategory: (state, action: PayloadAction<boolean>) => {
             state.isDoneAddCategory = action.payload;
@@ -88,6 +93,7 @@ export const ModalsSlice = createSlice({
             state.isRemoveProduct = false;
             state.isAddCategory = false;
             state.isAddProduct = false;
+            state.isDoneAddBanner = false;
             state.isDoneAddCategory = false;
             state.isDoneAddProduct = false;
             state.isDoneEditCategory = false;
@@ -105,4 +111,4 @@ export default ModalsSlice.reducer;
 
 export const {changeIsRemoveCategory, changeIsRemoveProduct, changeIsAddCategory, changeIsAddProduct,
                 changeIsDoneAddCategory, changeIsDoneAddProduct, changeIsViewCategory, changeIsNotViewCategory,
-                changeIsOpen, clearModals, setModalData, changeIsDoneEditCategory, setModalDataPath, setModalDataCategory, changeIsDoneEditProduct} = ModalsSlice.actions;
+                changeIsOpen, clearModals, setModalData, changeIsDoneEditCategory, setModalDataPath, setModalDataCategory, changeIsDoneEditProduct, changeIsDoneAddBanner} = ModalsSlice.actions;

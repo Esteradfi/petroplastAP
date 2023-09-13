@@ -69,7 +69,6 @@ const AddProductPage = () => {
         data.packageWidth = +(data.packageWidth.split(',').join('.'));
         data.packageHeight = +(data.packageHeight.split(',').join('.'));
         dispatch(postNewProductThunk(data));
-        //dispatch(clearSelectedImages())
     }
 
     const onDeleteImage = () => {
