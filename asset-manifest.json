@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/petroplastAP/static/css/main.2ed750cd.css",
-    "main.js": "/petroplastAP/static/js/main.35e17869.js",
+    "main.css": "/petroplastAP/static/css/main.5da6a848.css",
+    "main.js": "/petroplastAP/static/js/main.5b884669.js",
     "static/media/white-marble.svg": "/petroplastAP/static/media/white-marble.a4f8b09e620ab5036a03f70e8ba116e7.svg",
     "static/media/montserrat-latin-wght-normal.woff2": "/petroplastAP/static/media/montserrat-latin-wght-normal.b66f2d18f66f15c3ac56.woff2",
     "static/media/logo.png": "/petroplastAP/static/media/logo.c0b442d3cc08e42d5ef6.png",
@@ -21,15 +21,23 @@
     "static/media/montserrat-cyrillic-400-normal.woff2": "/petroplastAP/static/media/montserrat-cyrillic-400-normal.e5c5c19c23e370a342c8.woff2",
     "static/media/montserrat-vietnamese-wght-normal.woff2": "/petroplastAP/static/media/montserrat-vietnamese-wght-normal.05f01253eba3626ef33d.woff2",
     "static/media/montserrat-vietnamese-400-normal.woff": "/petroplastAP/static/media/montserrat-vietnamese-400-normal.f36d8e9e08c584303451.woff",
+    "static/media/delivery.svg": "/petroplastAP/static/media/delivery.46a848c1a74eae9b102dbbc8cf5e0b0f.svg",
     "static/media/montserrat-vietnamese-400-normal.woff2": "/petroplastAP/static/media/montserrat-vietnamese-400-normal.8f3f4c99eb0eeb5990f1.woff2",
+    "static/media/text-red.svg": "/petroplastAP/static/media/text-red.9923c399871f54e499fb7eacafa84a8a.svg",
+    "static/media/text-bold.svg": "/petroplastAP/static/media/text-bold.05a005797df1cdf24ce575e6579dbe17.svg",
+    "static/media/num-list.svg": "/petroplastAP/static/media/num-list.6d27faf1288d5327445dfdc4799e95d9.svg",
+    "static/media/pickup.svg": "/petroplastAP/static/media/pickup.213e4ecf7508701d6cde6bd39ddfd34c.svg",
+    "static/media/unnum-list.svg": "/petroplastAP/static/media/unnum-list.331c87f13d00af12dbde6d852996aca3.svg",
     "static/media/arrow-right.svg": "/petroplastAP/static/media/arrow-right.1be2f9f7742e83ca080bd65492f8170b.svg",
+    "static/media/payment.svg": "/petroplastAP/static/media/payment.254b7f8d1c96f08dfddfa9cffa6f37f2.svg",
     "static/media/search.svg": "/petroplastAP/static/media/search.1d211881b0d72cee75d4900181401b30.svg",
+    "static/media/delivery-rus.svg": "/petroplastAP/static/media/delivery-rus.f66289857b561eb6c383e3c9c822016f.svg",
     "index.html": "/petroplastAP/index.html",
-    "main.2ed750cd.css.map": "/petroplastAP/static/css/main.2ed750cd.css.map",
-    "main.35e17869.js.map": "/petroplastAP/static/js/main.35e17869.js.map"
+    "main.5da6a848.css.map": "/petroplastAP/static/css/main.5da6a848.css.map",
+    "main.5b884669.js.map": "/petroplastAP/static/js/main.5b884669.js.map"
   },
   "entrypoints": [
-    "static/css/main.2ed750cd.css",
-    "static/js/main.35e17869.js"
+    "static/css/main.5da6a848.css",
+    "static/js/main.5b884669.js"
   ]
 }
