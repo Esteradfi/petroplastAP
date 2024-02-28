@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/petroplastAP/static/css/main.dbc0f6b1.css",
-    "main.js": "/petroplastAP/static/js/main.efd0bc2c.js",
+    "main.css": "/petroplastAP/static/css/main.2cc0b417.css",
+    "main.js": "/petroplastAP/static/js/main.8183ab2a.js",
     "static/media/white-marble.svg": "/petroplastAP/static/media/white-marble.a4f8b09e620ab5036a03f70e8ba116e7.svg",
     "static/media/montserrat-latin-wght-normal.woff2": "/petroplastAP/static/media/montserrat-latin-wght-normal.b66f2d18f66f15c3ac56.woff2",
     "static/media/logo.png": "/petroplastAP/static/media/logo.c0b442d3cc08e42d5ef6.png",
@@ -34,11 +34,11 @@
     "static/media/search.svg": "/petroplastAP/static/media/search.1d211881b0d72cee75d4900181401b30.svg",
     "static/media/delivery-rus.svg": "/petroplastAP/static/media/delivery-rus.f66289857b561eb6c383e3c9c822016f.svg",
     "index.html": "/petroplastAP/index.html",
-    "main.dbc0f6b1.css.map": "/petroplastAP/static/css/main.dbc0f6b1.css.map",
-    "main.efd0bc2c.js.map": "/petroplastAP/static/js/main.efd0bc2c.js.map"
+    "main.2cc0b417.css.map": "/petroplastAP/static/css/main.2cc0b417.css.map",
+    "main.8183ab2a.js.map": "/petroplastAP/static/js/main.8183ab2a.js.map"
   },
   "entrypoints": [
-    "static/css/main.dbc0f6b1.css",
-    "static/js/main.efd0bc2c.js"
+    "static/css/main.2cc0b417.css",
+    "static/js/main.8183ab2a.js"
   ]
 }
